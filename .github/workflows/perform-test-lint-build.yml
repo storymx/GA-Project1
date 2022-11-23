@@ -1,59 +1,59 @@
 name: "Perform Tests and Lint"
-on: [workflow_dispatch, push, pull_request]
+on: [workflow_dispatch, push]
   branches:
     - development
-    - main
-  branches-ignore:
-    - 'release/US123456-**'
-  tags: 
-    - v2
-    - v1.*
-  tags-ignore:
-    - v2
-    - v1.
-permissions: read-all
-permissions: 
-  actions: read|write|none
-  checks: read|write|none
-  contents: read|write|none
-  deployments: read|write|none
-  id-token: read|write|none
-  issues: read|write|none
-  discussions: read|write|none
-  packages: read|write|none
-  pages: read|write|none
-  pull-requests: read|write|none
-  repository-projects: read|write|none
-  security-events: read|write|none
-  statuses: read|write|none
+    - master
+  # branches-ignore:
+  #   - 'release/US123456-**'
+  # tags: 
+  #   - v2
+  #   - v1.*
+  # tags-ignore:
+  #   - v2
+  #   - v1.
+# permissions: read-all
+# permissions: 
+#   actions: read|write|none
+#   checks: read|write|none
+#   contents: read|write|none
+#   deployments: read|write|none
+#   id-token: read|write|none
+#   issues: read|write|none
+#   discussions: read|write|none
+#   packages: read|write|none
+#   pages: read|write|none
+#   pull-requests: read|write|none
+#   repository-projects: read|write|none
+#   security-events: read|write|none
+#   statuses: read|write|none
 jobs:
   linting:
     runs-on: ubuntu-latest
 
-    permissions: read-all/write-all
-      actions: read|write|none
-      checks: read|write|none
-      contents: read|write|none
-      deployments: read|write|none
-      id-token: read|write|none
-      issues: read|write|none
-      discussions: read|write|none
-      packages: read|write|none
-      pages: read|write|none
-      pull-requests: read|write|none
-      repository-projects: read|write|none
-      security-events: read|write|none
-      statuses: read|write|none
+    # permissions: read-all/write-all
+    #   actions: read|write|none
+    #   checks: read|write|none
+    #   contents: read|write|none
+    #   deployments: read|write|none
+    #   id-token: read|write|none
+    #   issues: read|write|none
+    #   discussions: read|write|none
+    #   packages: read|write|none
+    #   pages: read|write|none
+    #   pull-requests: read|write|none
+    #   repository-projects: read|write|none
+    #   security-events: read|write|none
+    #   statuses: read|write|none
 
     steps: 
       - name: Get Code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
 
-      - name: Run Linter
-        run: echo "Using linter"
+      # - name: Run Linter
+      #   run: echo "Using linter"
 
   testing:
     runs-on: ubuntu-latest
@@ -61,22 +61,22 @@ jobs:
       - name: Get Code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
 
-      - name: Verify Unit Tests
-        run: npm run tests
+      # - name: Verify Unit Tests
+      #   run: npm run tests
 
   delpoyment:
-    if: ${{ always() }}
+    # if: ${{ always() }}
     needs: [linting, testing]
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: npm install
+      # - name: Install Dependencies
+      #   run: npm install
 
       - name: Deploying the Project
         run: echo "deploying the Project to Cloud hosting."
