@@ -1,5 +1,9 @@
 name: "Perform Tests and Lint"
-on: [workflow_dispatch, push]
+on: 
+  workflow_dispatch:
+    branches: master
+  push:
+    branches: master
   branches:
     - development
     - master
