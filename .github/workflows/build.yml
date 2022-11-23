@@ -4,9 +4,9 @@ on:
     branches: master
   push:
     branches: master
-  branches:
-    - development
-    - master
+  # branches:
+  #   - development
+  #   - master
   # branches-ignore:
   #   - 'release/US123456-**'
   # tags: 
